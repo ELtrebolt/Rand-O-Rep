@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { UiComponent } from './ui/ui.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HandtrackerComponent } from './handtracker/handtracker.component';
+import { RandomRestComponent } from './random-rest/random-rest.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UiComponent,
     HomePageComponent,
-    HandtrackerComponent
+    HandtrackerComponent,
+    RandomRestComponent
   ],
   imports: [
     BrowserModule,

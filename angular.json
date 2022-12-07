@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "at-alternative-interaction-solution"
+  "defaultProject": "at-alternative-interaction-solution",
+  "cli": {
+    "analytics": "4205820b-22ce-415e-86ae-a1e56ed93d01"
+  }
 }
