@@ -7,21 +7,23 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class RandomRestComponent implements OnInit, OnChanges{
   periods:String[] = ["1 minute", "2 minutes", "3 minutes"];
-  @Input() gesture:String = "None";
+  @Input() gesture:String = "";
   chosen_period:String = "";
 
   constructor() { }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  async ngOnChanges(changes: SimpleChanges): Promise<void> {
     if (changes.gesture) {
       const currValue = changes.gesture.currentValue;
       if(currValue == "Hand Pointing")
       {
+        this.chosen_period = "Generating Random Rest...";
+        await new Promise(resolve => { setTimeout(resolve, 2000)});
         this.chosen_period = this.periods[Math.floor(Math.random()*this.periods.length)];
       }
-      else if(currValue == "None")
+      else if(currValue == "")
       {
-        this.chosen_period = "Point Hand to Get a Random Rest Period!"
+        this.chosen_period = "Point Hand to Get a Random Rest Period!";
       }
     }
   }
