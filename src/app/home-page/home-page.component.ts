@@ -7,7 +7,7 @@ import { PredictionEvent } from '../prediction-event';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  gesture: String = "";
+  gesture: string = "";
   constructor() { }
 
   ngOnInit(): void {
