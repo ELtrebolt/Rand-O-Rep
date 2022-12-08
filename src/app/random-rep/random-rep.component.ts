@@ -12,17 +12,19 @@ export class RandomRepComponent implements OnChanges, OnInit{
   public minSelected: boolean;
   public maxSelected: boolean;
   public errorMessage: string;
-  public randomRep: number;
+  public randomRep: string;
+  public generatingMessage: string;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.minRep = 0;
-    this.maxRep = 0;
+    this.minRep = 1;
+    this.maxRep = 2;
     this.minSelected = false;
     this.maxSelected = false;
     this.errorMessage = '';
-    this.randomRep = 0;
+    this.randomRep = '';
+    this.generatingMessage = '';
   }
 
   async ngOnChanges(changes: SimpleChanges): Promise<void> {
@@ -41,7 +43,7 @@ export class RandomRepComponent implements OnChanges, OnInit{
       } else if (currValue == 'Closed Hand') {
         if (this.minSelected) {
           if (this.minRep == 0) {
-            this.errorMessage = "Error: Minimum rep value must be greater than 0"
+            this.errorMessage = "Minimum rep value must be greater than 0"
             await new Promise(resolve => { setTimeout(resolve, 2000)});
             this.errorMessage = "";
           } else {
@@ -68,8 +70,17 @@ export class RandomRepComponent implements OnChanges, OnInit{
           this.maxSelected = true; 
         }
         this.minSelected = false;
-      } else if (currValue == 'One Open, One Closed') {
-
+      } else if (currValue == 'One Open Hand, One Closed Hand') {
+        if (this.minRep == 0) {
+          this.errorMessage = "Minimum rep value must be set"
+          await new Promise(resolve => { setTimeout(resolve, 2000)});
+          this.errorMessage = ""; 
+        } else {
+          this.generatingMessage = "Generating Random Rep Count...";
+          await new Promise(resolve => { setTimeout(resolve, 2000)});
+          this.generatingMessage = "";
+          this.randomRep = (Math.floor(Math.random() * this.maxRep) + this.minRep).toString() + " Reps";
+        }
       }
     }
   }
