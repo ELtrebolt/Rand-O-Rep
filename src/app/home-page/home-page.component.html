@@ -1,5 +1,5 @@
 <div class="container-md text-center">
-  <h1>Rand-O-Rep</h1>
+  <h1 class="title">Rand-<span style="color:salmon">O</span>-Rep</h1>
   <div class="row">
     <div class="col-sm">
       <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
@@ -12,17 +12,44 @@
   <div class="row">
     <div class = "col-sm te">
       <ul style="list-style:none; padding-left: 7.3em; padding-top: 1em; text-align: left;">
-        <li><strong>Change Minimum</strong> --- <span style="color:salmon">Two Open Hands</span></li>
-        <li><strong>Change Maximum</strong> --- <span style="color:salmon">Two Closed Hands</span></li>
-        <li><strong>Increase Number</strong> --- <span style="color:salmon">Open Hand</span></li>
-        <li><strong>Decrease Number</strong> --- <span style="color:salmon">Closed Hand</span></li>
-        <li><strong>Confirm Number</strong> --- <span style="color:salmon">Hand Pointing</span></li>
-        <li><strong>Generate Random Number</strong> --- <span style="color:salmon">One Open Hand, One Closed Hand</span></li>
-        <li><strong>Generate Random Rest</strong> --- <span style="color:salmon">One Open Hand, One Pointing Hand</span></li>
+        <li><strong>Change Minimum</strong> --- Two Open Hands</li>
+        <li><strong>Change Maximum</strong> --- Two Closed Hands</li>
+        <li><strong>Increase Number</strong> --- Open Hand</li>
+        <li><strong>Decrease Number</strong> --- Closed Hand</li>
+        <li><strong>Confirm Number</strong> --- Hand Pointing</li>
+        <li><strong>Generate Random Number</strong> --- One Open Hand, One Closed Hand</li>
+        <li><strong>Generate Random Rest</strong> --- One Open Hand, One Pointing Hand</li>
       </ul>
     </div>
     <div class="col">
       <app-random-rest [gesture] = "gesture"></app-random-rest>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              How to Use
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>On any given day at the gym, have you ever wondered: "Man, I really wish I could add some variety to my workout today"?</strong>
+              Well, with <em>Rand-O-Rep™</em> you can exactly do that by getting randomized repetition values within a set range, and randomized rest periods spanning from 1 to 3 minutes!
+              What makes our user experience truly unique is that you can perform actions and modify values with the use of hand gestures!
+            </div>
+            <div class="accordion-body">
+              To use the application, begin by clicking the "Start" button to turn on your camera and be able to see your beautiful face. Then, refer to the key below the video screen to
+              perform your desired action with a sequence of hand gestures. <br><br>For example, to increase the lower bound of the Rep Range, simply: 
+              <br>1.) Put <strong>Two Hands Up</strong>.
+              <br>2.) Put a single <strong>Open Hand Up</strong> to raise the value (repeatedly raising your open hand up and down until reaching the desired value).
+              <br>3.) Put up <strong>One Open Hand, One Closed Hand</strong> to confirm the value.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
