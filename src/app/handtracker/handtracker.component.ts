@@ -57,7 +57,7 @@ export class HandtrackerComponent implements OnInit {
     this.startVideo().then(()=>{
         //The default size set in the library is 20px. Change here or use styling
         //to hide if video is not desired in UI.
-        this.video.nativeElement.style.height = "200px"
+        this.video.nativeElement.style.height = "400px"
 
         console.log("starting predictions");
         this.runInterval = setInterval(()=>{

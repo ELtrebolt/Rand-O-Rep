@@ -9,7 +9,8 @@ export class RandomRestComponent implements OnInit, OnChanges{
   periods:String[] = ["1 minute", "2 minutes", "3 minutes"];
   @Input() gesture:String = "";
   chosen_period:String = "";
-
+  instruction:string = "Hold up a 5 and a 1 to Get a Random Rest Period!";
+  generatingMessage:string = "";
   constructor() { }
 
   async ngOnChanges(changes: SimpleChanges): Promise<void> {
@@ -17,13 +18,11 @@ export class RandomRestComponent implements OnInit, OnChanges{
       const currValue = changes.gesture.currentValue;
       if(currValue == "One Open Hand, One Pointing Hand")
       {
-        this.chosen_period = "Generating Random Rest...";
+        this.instruction = "";
+        this.generatingMessage = "Generating Random Rest...";
         await new Promise(resolve => { setTimeout(resolve, 2000)});
+        this.generatingMessage = "";
         this.chosen_period = this.periods[Math.floor(Math.random()*this.periods.length)];
-      }
-      else if(currValue == "")
-      {
-        this.chosen_period = "Hold up a 5 and a 1 to Get a Random Rest Period!";
       }
     }
   }

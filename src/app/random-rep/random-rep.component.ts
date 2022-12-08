@@ -29,6 +29,7 @@ export class RandomRepComponent implements OnChanges, OnInit{
 
   async ngOnChanges(changes: SimpleChanges): Promise<void> {
     if (changes.gesture) {
+      this.randomRep = '';
       const currValue = changes.gesture.currentValue;
       if (currValue == 'Open Hand') {
         if (this.minSelected) {
@@ -42,8 +43,8 @@ export class RandomRepComponent implements OnChanges, OnInit{
         }
       } else if (currValue == 'Closed Hand') {
         if (this.minSelected) {
-          if (this.minRep == 0) {
-            this.errorMessage = "Minimum rep value must be greater than 0"
+          if (this.minRep == 1) {
+            this.errorMessage = "Minimum rep value must at least be 1"
             await new Promise(resolve => { setTimeout(resolve, 2000)});
             this.errorMessage = "";
           } else {
@@ -51,25 +52,29 @@ export class RandomRepComponent implements OnChanges, OnInit{
           }
         }
         else if (this.maxSelected) {
-          this.maxRep--;
-          if (this.maxRep <= this.minRep) {
-            this.minRep--;
+          if (this.maxRep == 2) {
+            this.errorMessage = "Maximum rep value must at least be 2"
+            await new Promise(resolve => { setTimeout(resolve, 2000)});
+            this.errorMessage = ""; 
+          } else {
+            this.maxRep--;
+            if (this.maxRep <= this.minRep) {
+              this.minRep--;
+            }
           }
         }
       } else if (currValue == 'Two Open Hands') {
-        if (this.minSelected) {
-          this.minSelected = false
-        } else { 
-          this.minSelected = true; 
-        }
+        this.minSelected = true; 
         this.maxSelected = false;
       } else if (currValue == 'Two Closed Hands') {
-        if (this.maxSelected) {
-          this.maxSelected = false;  
-        } else {
-          this.maxSelected = true; 
-        }
+        this.maxSelected = true; 
         this.minSelected = false;
+      } else if (currValue == 'Hand Pointing') {
+        if (this.minSelected) {
+          this.minSelected = false;
+        } else if (this.maxSelected) {
+          this.maxSelected = false;
+        }
       } else if (currValue == 'One Open Hand, One Closed Hand') {
         if (this.minRep == 0) {
           this.errorMessage = "Minimum rep value must be set"
@@ -79,7 +84,9 @@ export class RandomRepComponent implements OnChanges, OnInit{
           this.generatingMessage = "Generating Random Rep Count...";
           await new Promise(resolve => { setTimeout(resolve, 2000)});
           this.generatingMessage = "";
-          this.randomRep = (Math.floor(Math.random() * this.maxRep) + this.minRep).toString() + " Reps";
+          const repVal = Math.floor(Math.random() * (this.maxRep-this.minRep+1)) + this.minRep
+          const repStr = repVal > 1 ? " Reps": " Rep"
+          this.randomRep = repVal.toString() + repStr;
         }
       }
     }
