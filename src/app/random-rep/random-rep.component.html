@@ -1,1 +1,18 @@
-<p>random-rep works!</p>
+<div class="container text-center">
+    <div class="row">
+      <div class="col-4">
+        <h1 class="rep-value" [ngStyle]="{'border-style': minSelected ? 'solid' : 'hidden'}">{{minRep}}</h1>
+      </div>
+      <div class="col">
+        <h1 class="rep-dash">-</h1>
+      </div>
+      <div class="col-4">
+        <h1 class="rep-value" [ngStyle]="{'border-style': maxSelected ? 'solid' : 'hidden'}">{{maxRep}}</h1>
+      </div>
+    </div>
+    <div class="row" *ngIf="errorMessage">
+        <div class="col">
+            <span class="error">{{errorMessage}}</span>
+        </div>
+    </div>
+  </div>

@@ -1,15 +1,18 @@
 <div class="container-md text-center">
   <h1>Rand-O-Rep</h1>
   <div class="row">
-    <div class="col">
+    <div class="col-sm">
       <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
       <div [innerHTML]="gesture"></div> 
     </div>
-    <div class="col">
+    <div class="col-sm">
       <app-random-rep [gesture]="gesture"></app-random-rep>
     </div>
   </div>
   <div class="row">
+    <div class = "col-sm">
+      2 of 1
+    </div>
     <div class="col">
       <app-random-rest [gesture] = "gesture"></app-random-rest>
     </div>

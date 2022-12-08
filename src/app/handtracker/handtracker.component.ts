@@ -30,7 +30,7 @@ export class HandtrackerComponent implements OnInit {
     flipHorizontal: true, // flip e.g for video
     maxNumBoxes: 20, // maximum number of boxes to detect
     iouThreshold: 0.5, // ioU threshold for non-max suppression
-    scoreThreshold: 0.6, // confidence threshold for predictions.
+    scoreThreshold: 0.7, // confidence threshold for predictions.
   };
 
   constructor() {
@@ -86,19 +86,19 @@ export class HandtrackerComponent implements OnInit {
             let closedhands = 0;
             let pointing = 0;
             let pinching = 0;
+            console.log(predictions)
             for(let p of predictions){
-                //uncomment to view label and position data
-                console.log(p.label + " at X: " + p.bbox[0] + ", Y: " + p.bbox[1] + " at X: " + p.bbox[2] + ", Y: " + p.bbox[3]);
-                
-                if(p.label == 'open') openhands++;
-                if(p.label == 'closed') closedhands++;
-                if(p.label == 'point') pointing++;
-                if(p.label == 'pinch') pinching++;
-                
+                if (p.label != 'face') {
+                  //uncomment to view label and position data
+                  // console.log(p.label + " at X: " + p.bbox[0] + ", Y: " + p.bbox[1] + " at X: " + p.bbox[2] + ", Y: " + p.bbox[3]);
+                  if(p.label == 'open') openhands++;
+                  if(p.label == 'closed') closedhands++;
+                  if(p.label == 'point') pointing++;
+                  if(p.label == 'pinch') pinching++;
+                }
             }
 
             // These are just a few options! What about one hand open and one hand closed!?
-
             if (openhands > 1) this.detectedGesture = "Two Open Hands";
             else if(openhands == 1) this.detectedGesture = "Open Hand";
             
@@ -110,6 +110,10 @@ export class HandtrackerComponent implements OnInit {
             
             if (pinching > 1) this.detectedGesture = "Two Hands Pinching";
             else if(pinching == 1) this.detectedGesture = "Hand Pinching";
+        
+            // custom gestures
+            else if (openhands == 1 && closedhands == 1) this.detectedGesture = "One Open Hand, One Closed Hand";
+            else if (openhands == 1 && pointing == 1) this.detectedGesture = "One Open Hand, One Pointing Hand"; 
 
             if (openhands == 0 && closedhands == 0 && pointing == 0 && pinching == 0)
                 this.detectedGesture = "None";

@@ -15,6 +15,7 @@ export class HomePageComponent implements OnInit {
 
   prediction(event: PredictionEvent){
     this.gesture = event.getPrediction();
+    console.log("GESTURE", this.gesture)
   }
 
 }
