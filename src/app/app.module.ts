@@ -8,6 +8,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HandtrackerComponent } from './handtracker/handtracker.component';
 import { RandomRestComponent } from './random-rest/random-rest.component';
 import { RandomRepComponent } from './random-rep/random-rep.component';
+import { FaqPageComponent } from './faq-page/faq-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RandomRepComponent } from './random-rep/random-rep.component';
     HomePageComponent,
     HandtrackerComponent,
     RandomRestComponent,
-    RandomRepComponent
+    RandomRepComponent,
+    FaqPageComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ export class RandomRestComponent implements OnInit, OnChanges{
   async ngOnChanges(changes: SimpleChanges): Promise<void> {
     if (changes.gesture) {
       const currValue = changes.gesture.currentValue;
-      if(currValue == "Hand Pointing")
+      if(currValue == "One Open Hand, One Pointing Hand")
       {
         this.chosen_period = "Generating Random Rest...";
         await new Promise(resolve => { setTimeout(resolve, 2000)});
@@ -23,7 +23,7 @@ export class RandomRestComponent implements OnInit, OnChanges{
       }
       else if(currValue == "")
       {
-        this.chosen_period = "Point Hand to Get a Random Rest Period!";
+        this.chosen_period = "Hold up a 5 and a 1 to Get a Random Rest Period!";
       }
     }
   }
