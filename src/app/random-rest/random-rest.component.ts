@@ -19,6 +19,7 @@ export class RandomRestComponent implements OnInit, OnChanges{
       if(currValue == "One Open Hand, One Pointing Hand")
       {
         this.instruction = "";
+        this.chosen_period = "";
         this.generatingMessage = "Generating Random Rest...";
         await new Promise(resolve => { setTimeout(resolve, 2000)});
         this.generatingMessage = "";
