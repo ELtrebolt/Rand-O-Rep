@@ -1,4 +1,4 @@
---Readme document for *author(s)*, *email(s)*, *UCI id(s)*--
+--Readme document for David Dao & Ethan Lee, davidvd@uci.edu & ethanpl@uci.edu, 15537868 & 53358714
 
 1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
 
