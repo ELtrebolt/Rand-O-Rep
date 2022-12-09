@@ -2,10 +2,7 @@
 <span *ngIf="!chosen_period">{{instruction}}</span>
 <span *ngIf="generatingMessage">{{generatingMessage}}</span>
 <div class="row generated-rest" *ngIf="chosen_period">
-    <div class="col-2">
-        <img src="../../assets/water01.svg" alt="sports-bottle" width="100" height="100"> 
-    </div>
-    <div class="col-8">
+    <div class="col-10">
         <p>{{ chosen_period }}</p> 
     </div>
 </div>

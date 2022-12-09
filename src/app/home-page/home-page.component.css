@@ -1,5 +1,9 @@
 .title {
     font-family: 'Rubik Mono One';
     font-weight: 400;
-    font-size: 8em;
+    font-size: 8vw;
+}
+
+.row {
+    padding-bottom: 3em;
 }

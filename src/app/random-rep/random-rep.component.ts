@@ -29,7 +29,6 @@ export class RandomRepComponent implements OnChanges, OnInit{
 
   async ngOnChanges(changes: SimpleChanges): Promise<void> {
     if (changes.gesture) {
-      this.randomRep = '';
       const currValue = changes.gesture.currentValue;
       if (currValue == 'Open Hand') {
         if (this.minSelected) {
@@ -76,6 +75,7 @@ export class RandomRepComponent implements OnChanges, OnInit{
           this.maxSelected = false;
         }
       } else if (currValue == 'One Open Hand, One Closed Hand') {
+        this.randomRep = '';
         if (this.minRep == 0) {
           this.errorMessage = "Minimum rep value must be set"
           await new Promise(resolve => { setTimeout(resolve, 2000)});
