@@ -1,8 +1,10 @@
-<h2>Rest Period</h2>
-<span *ngIf="!chosen_period">{{instruction}}</span>
-<span *ngIf="generatingMessage">{{generatingMessage}}</span>
-<div class="row generated-rest" *ngIf="chosen_period">
-    <div class="col-10">
-        <p>{{ chosen_period }}</p> 
+<div class="container text-center">
+    <h2>Rest Period</h2>
+    <span *ngIf="!chosen_period">{{instruction}}</span>
+    <span *ngIf="generatingMessage">{{generatingMessage}}</span>
+    <div class="row generated-rest" *ngIf="chosen_period">
+        <div>
+            <p>{{ chosen_period }}</p> 
+        </div>
     </div>
 </div>
